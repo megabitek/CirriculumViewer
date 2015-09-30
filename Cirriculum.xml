@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Cirriculum.xml
+    Created on : September 23, 2015, 10:35 AM
+    Author     : Elena_Kholkina
+    Description:
+        Purpose of the document follows.
+-->
+
+<root  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+       xmlns:ns0='http://xml.netbeans.org/schema/Cirriculum'
+       xsi:schemaLocation='http://xml.netbeans.org/schema/Cirriculum Cirriculum.xsd'>
+    <report>
+        <studentid>1</studentid>
+        <theorytask>
+            <theorytaskid>1</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask>   
+        <courseid>1</courseid>
+    </report>
+    <report>
+        <studentid>1</studentid>
+        <theorytask>
+            <theorytaskid>2</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>1</practictaskid>
+            <practictaskstate>exercizeDone</practictaskstate>
+            <balls>5</balls>
+        </practictask>  
+        <courseid>2</courseid>
+    </report>
+    <report>
+        <studentid>1</studentid>
+        <theorytask>
+            <theorytaskid>3</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>2</practictaskid>
+            <practictaskstate>exercizeDone</practictaskstate>
+            <balls>5</balls>
+        </practictask>  
+        <courseid>3</courseid>
+    </report>
+    <report>
+        <studentid>1</studentid>
+        <theorytask>
+            <theorytaskid>4</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>3</practictaskid>
+            <practictaskstate>exercizeDone</practictaskstate>
+            <balls>5</balls>
+        </practictask>  
+        <courseid>4</courseid>
+    </report>
+    <report>
+        <studentid>1</studentid>
+        <theorytask>
+            <theorytaskid>5</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>4</practictaskid>
+            <practictaskstate>makingInprocess</practictaskstate>
+                     
+        </practictask>  
+        <courseid>5</courseid>
+    </report>
+    <report>
+        <studentid>1</studentid>
+        <theorytask>
+            <theorytaskid>6</theorytaskid>
+            <theorytaskstate>learningNotBegin</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>5</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>  
+        <practictask>
+            <practictaskid>6</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>      
+        
+        <courseid>6</courseid>
+    </report>
+    <report>
+        <studentid>1</studentid>
+        <theorytask>
+            <theorytaskid>7</theorytaskid>
+            <theorytaskstate>learningNotBegin</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>7</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>  
+        <practictask>
+            <practictaskid>8</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>    
+        <courseid>7</courseid>
+    </report>    
+    <report>
+        <studentid>1</studentid>    
+        <practictask>
+            <practictaskid>9</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>    
+        <courseid>8</courseid>
+    </report>
+    
+    
+    
+    
+    
+    <report>
+        <studentid>2</studentid>
+        <theorytask>
+            <theorytaskid>1</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask>   
+        <courseid>1</courseid>
+    </report>
+    <report>
+        <studentid>2</studentid>
+        <theorytask>
+            <theorytaskid>2</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>1</practictaskid>
+            <practictaskstate>exercizeDone</practictaskstate>
+            <balls>5</balls>
+        </practictask>  
+        <courseid>2</courseid>
+    </report>
+    <report>
+        <studentid>2</studentid>
+        <theorytask>
+            <theorytaskid>3</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>2</practictaskid>
+            <practictaskstate>exercizeDone</practictaskstate>
+            <balls>5</balls>
+        </practictask>  
+        <courseid>3</courseid>
+    </report>
+    <report>
+        <studentid>2</studentid>
+        <theorytask>
+            <theorytaskid>4</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>3</practictaskid>
+            <practictaskstate>exercizeDone</practictaskstate>
+            <balls>5</balls>
+        </practictask>  
+        <courseid>4</courseid>
+    </report>
+    <report>
+        <studentid>2</studentid>
+        <theorytask>
+            <theorytaskid>5</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>4</practictaskid>
+            <practictaskstate>exercizeDone</practictaskstate>
+            <balls>4</balls>         
+        </practictask>  
+        <courseid>5</courseid>
+    </report>
+    <report>
+        <studentid>2</studentid>
+        <theorytask>
+            <theorytaskid>6</theorytaskid>
+            <theorytaskstate>learningInProcess</theorytaskstate>            
+        </theorytask> 
+        <practictask>
+            <practictaskid>5</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>  
+        <practictask>
+            <practictaskid>6</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>     
+        <courseid>6</courseid>
+    </report>
+    <report>
+        <studentid>2</studentid>
+        <theorytask>
+            <theorytaskid>7</theorytaskid>
+            <theorytaskstate>learningNotBegin</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>7</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>  
+        <practictask>
+            <practictaskid>8</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>    
+        <courseid>7</courseid>
+    </report>
+    <report>
+        <studentid>2</studentid>      
+        <practictask>
+            <practictaskid>9</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>    
+        <courseid>8</courseid>
+    </report>
+    
+    
+    
+    
+    
+    
+    <report>
+        <studentid>3</studentid>
+        <theorytask>
+            <theorytaskid>4</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>5</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>3</practictaskid>
+            <practictaskstate>makingInprocess</practictaskstate>
+          
+        </practictask>  
+        <courseid>4</courseid>
+    </report>
+    <report>
+        <studentid>3</studentid>
+        <theorytask>
+            <theorytaskid>5</theorytaskid>
+            <theorytaskstate>learningNotBegin</theorytaskstate>
+         
+        </theorytask> 
+        <practictask>
+            <practictaskid>4</practictaskid>
+            <practictaskstate>exercizeChecking</practictaskstate>
+                    
+        </practictask>  
+        <courseid>5</courseid>
+    </report>
+  
+  
+    <report>
+        <studentid>4</studentid>
+        <theorytask>
+            <theorytaskid>1</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>3</balls>
+        </theorytask>   
+        <courseid>1</courseid>
+    </report>
+    <report>
+        <studentid>4</studentid>
+        <theorytask>
+            <theorytaskid>2</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>4</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>1</practictaskid>
+            <practictaskstate>exercizeChecking</practictaskstate>
+            <balls>5</balls>
+        </practictask>  
+        <courseid>2</courseid>
+    </report>
+    <report>
+        <studentid>4</studentid>
+        <theorytask>
+            <theorytaskid>3</theorytaskid>
+            <theorytaskstate>learningEnded</theorytaskstate>
+            <balls>4</balls>
+        </theorytask> 
+        <practictask>
+            <practictaskid>2</practictaskid>
+            <practictaskstate>exercizeDone</practictaskstate>
+            <balls>5</balls>
+        </practictask>  
+        <courseid>3</courseid>
+    </report>
+    
+     <report>
+        <studentid>4</studentid>
+        <theorytask>
+            <theorytaskid>7</theorytaskid>
+            <theorytaskstate>learningInProcess</theorytaskstate>            
+        </theorytask> 
+        <practictask>
+            <practictaskid>7</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>  
+        <practictask>
+            <practictaskid>8</practictaskid>
+            <practictaskstate>makingInProcess</practictaskstate>           
+        </practictask>    
+        
+        <courseid>7</courseid>
+    </report>
+    
+    <report>
+        <studentid>4</studentid>
+       
+        <practictask>
+            <practictaskid>9</practictaskid>
+            <practictaskstate>makingNotBegin</practictaskstate>           
+        </practictask>    
+        
+        <courseid>8</courseid>
+    </report>
+
+    
+     
+     
+    
+    
+    
+    <students>
+        <student>
+            <studentid>1</studentid>
+            <name>Alexander Sergeev</name>
+            <email>as@kjkl.ru</email>
+            <date-learning-begin>2015-09-01</date-learning-begin>
+            <contract>true</contract>
+            <programmid>1</programmid>
+        </student>
+        <student>
+            <studentid>2</studentid>
+            <name>Boris Romanov</name>
+            <email>boris_romanov@ya.ru</email>
+            <date-learning-begin>2015-07-01</date-learning-begin>
+            <contract>true</contract>
+            <programmid>1</programmid>
+        </student>
+        <student>
+            <studentid>3</studentid>
+            <name>Vadim Petrov</name>
+            <email>vp@gmai.com</email>
+            <date-learning-begin>2015-08-20</date-learning-begin>
+            <contract>false</contract>
+            <programmid>3</programmid>
+        </student>
+        <student>
+            <studentid>4</studentid>
+            <name>Ivan Fedorov</name>
+            <email>ivan_fed@mail.ru</email>
+            <date-learning-begin>2015-03-10</date-learning-begin>
+            <contract>true</contract>
+            <programmid>2</programmid>
+        </student>
+    </students>
+    <programms>
+        <programm>
+            <programmid>1</programmid>
+            <title>full</title>
+            <creation-date>2010-03-15</creation-date>
+            <author>sergei sidorov</author>
+            <courses>
+                <coursesid>1</coursesid>
+            </courses>
+            <courses>
+                <coursesid>2</coursesid>
+            </courses>
+            <courses>
+                <coursesid>3</coursesid>
+            </courses>
+            <courses>
+                <coursesid>4</coursesid>
+            </courses>
+            <courses>
+                <coursesid>5</coursesid> 
+            </courses>
+            <courses>
+                <coursesid>6</coursesid> 
+            </courses>
+            <courses>
+                <coursesid>7</coursesid>
+            </courses>
+            <courses>
+                <coursesid>8</coursesid>
+            </courses>
+        </programm>
+        <programm>
+             
+            <programmid>2</programmid>
+            <title>short</title>
+            <creation-date>2012-01-12</creation-date>
+            <author>anatoli vass</author>
+            <courses>
+                <coursesid>1</coursesid>
+            </courses>
+            <courses>
+                <coursesid>2</coursesid>
+            </courses>
+            <courses>
+                <coursesid>3</coursesid>
+            </courses>
+            <courses>
+                <coursesid>7</coursesid> 
+            </courses>
+            <courses>
+                <coursesid>8</coursesid>
+            </courses>        
+        </programm>
+        <programm>
+            <programmid>3</programmid>
+            <title>special</title>
+            <creation-date>2011-12-12</creation-date>
+            <author>yuri yakovlev</author>
+            <courses>           
+                <coursesid>4</coursesid>
+            </courses>
+            <courses>
+                <coursesid>5</coursesid>
+            </courses>
+        </programm>
+    </programms>
+    <courses>
+        <course>
+            <courseid>1</courseid>
+            <title>Overview of Eclipse IDE</title>
+            <author>ivan ivanov</author>
+            <tasks>
+                <theory-task-id>1</theory-task-id>
+            </tasks>
+                     
+        </course>
+        <course>
+            <courseid>2</courseid>
+            <title>Основы языка Java</title>
+            <author>petr petrov</author>
+            <tasks>
+                <theory-task-id>2</theory-task-id>
+            </tasks>
+            <tasks>
+                <practic-task-id>1</practic-task-id>
+            </tasks>           
+        </course>
+        <course>
+            <courseid>3</courseid>
+            <title>Язык XML</title>
+            <author>semen semenov</author>
+            <tasks>
+                <theory-task-id>3</theory-task-id>
+            </tasks>
+            <tasks>
+                <practic-task-id>2</practic-task-id>
+            </tasks>            
+        </course>
+        <course>
+            <courseid>4</courseid>
+            <title>Язык Java - расширенные возможности</title>
+            <author>dmitrii koshkin</author>
+            <tasks>
+                <theory-task-id>4</theory-task-id>
+            </tasks>
+            <tasks>
+                <practic-task-id>3</practic-task-id>
+            </tasks>           
+        </course>
+        
+        <course>
+            <courseid>5</courseid>
+            <title>Язык XSLT и XPath</title>
+            <author>georgii smirnov</author>
+            <tasks>
+                <theory-task-id>5</theory-task-id>
+            </tasks>
+            <tasks>
+                <practic-task-id>4</practic-task-id>
+            </tasks>           
+        </course>
+        
+        <course>
+            <courseid>6</courseid>
+            <title>Технология Struts Framework</title>
+            <author>ivan ivanov</author>
+            <tasks>
+                <theory-task-id>6</theory-task-id>
+            </tasks>
+            <tasks>
+                <practic-task-id>5</practic-task-id>
+            </tasks>
+            <tasks>
+                <practic-task-id>5</practic-task-id>
+            </tasks>
+        </course>
+        <course>
+            <courseid>7</courseid>
+            <title>Процесс производства программного обеспечения</title>
+            <author>dmitrii smirnov</author>
+            <tasks>
+                <theory-task-id>7</theory-task-id>
+            </tasks>
+            <tasks>
+                <practic-task-id>7</practic-task-id>
+            </tasks>
+            <tasks>
+                <practic-task-id>8</practic-task-id>
+            </tasks>
+        </course>
+        <course>
+            <courseid>8</courseid>
+            <title>Процесс разработки программного обеспечения</title>
+            <author>mikhail loginov</author>
+            <tasks>
+                <practic-task-id>9</practic-task-id>
+            </tasks>            
+        </course>
+    </courses>
+         
+    <practic-tasks>
+        <practic-task type="practic">
+            <practic-task-id>1</practic-task-id>
+            <title>Practical Task</title>
+            <duration>4</duration>
+        </practic-task>
+      
+        <practic-task type="practic">
+            <practic-task-id>2</practic-task-id>
+            <title>Practical Task</title>
+            <duration>16</duration>
+        </practic-task>
+   
+  
+        <practic-task type="practic">
+            <practic-task-id>3</practic-task-id>
+            <title>Practical Task</title>
+            <duration>8</duration>
+        </practic-task>
+  
+        <practic-task type="practic">
+            <practic-task-id>4</practic-task-id>
+            <title>Equipment Stylesheets</title>
+            <duration>8</duration>
+        </practic-task>
+
+        <practic-task type="practic">
+            <practic-task-id>5</practic-task-id>
+            <title>Struts Framework Task</title>
+            <duration>40</duration>
+        </practic-task>
+
+        <practic-task type="practic">
+            <practic-task-id>6</practic-task-id>
+            <title>Java Message Service Task</title>
+            <duration>20</duration>
+        </practic-task>
+        <practic-task type="practic">
+            <practic-task-id>7</practic-task-id>
+            <title>MS Project Practical Task</title>
+            <duration>8</duration>
+        </practic-task>
+        <practic-task type="practic">
+            <practic-task-id>8</practic-task-id>
+            <title>Software development process. Development team and its structure</title>
+            <duration>12</duration>
+        </practic-task>
+        <practic-task type="practic">
+            <practic-task-id>9</practic-task-id>
+            <title>Team Project</title>
+            <duration>80</duration>
+        </practic-task>
+  
+    </practic-tasks>
+    
+    
+    <theory-tasks>
+        <theory-task type="theory">
+            <theory-task-id>1</theory-task-id>
+            <title>Overview of Eclipse IDE</title>
+            <duration>4</duration>
+        </theory-task>
+        <theory-task type="theory">
+            <theory-task-id>2</theory-task-id>
+            <title>Learning the Java Language Basics</title>
+            <duration>17</duration>
+        </theory-task>
+        <theory-task type="theory">
+            <theory-task-id>3</theory-task-id>
+            <title>Learning the Java Language advanced features </title>
+            <duration>17</duration>
+        </theory-task>  
+        <theory-task type="theory">
+            <theory-task-id>4</theory-task-id>
+            <title>Learning XML Language</title>
+            <duration>6</duration>
+        </theory-task>
+        <theory-task type="theory">
+            <theory-task-id>5</theory-task-id>
+            <title>Learning XSLT and XPath Basics</title>
+            <duration>14</duration>
+        </theory-task>
+        <theory-task type="theory">
+            <theory-task-id>6</theory-task-id>
+            <itle>Struts Framework Fundamentals</itle>
+            <duration>8</duration>
+        </theory-task>
+        <theory-task type="theory">
+            <theory-task-id>7</theory-task-id>
+            <title>Mastering Microsoft Project</title>
+            <duration>3</duration>
+        </theory-task>
+               
+    </theory-tasks>
+
+</root>

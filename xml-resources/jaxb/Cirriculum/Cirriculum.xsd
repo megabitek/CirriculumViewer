@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/Cirriculum"
+    xmlns:tns="http://xml.netbeans.org/schema/Cirriculum"
+    elementFormDefault="qualified">
+    <xsd:complexType name="student-type">
+        <xsd:sequence>
+            <xsd:element name="studentid" type="xsd:integer"></xsd:element>
+            <xsd:element name="name" type="tns:strings"></xsd:element>
+            <xsd:element name="email" type="tns:email"></xsd:element>
+            <xsd:element name="date-learning-begin" type="xsd:date"></xsd:element>
+            <xsd:element name="contract" type="xsd:boolean"></xsd:element>
+            <xsd:element name="programmid" type="xsd:integer"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="programm-type">
+        <xsd:sequence>
+            <xsd:element name="programmid" type="xsd:integer"></xsd:element>
+            <xsd:element name="title" type="tns:strings"></xsd:element>
+            <xsd:element name="creation-date" type="xsd:date"></xsd:element>
+            <xsd:element name="author" type="xsd:string"></xsd:element>
+            <xsd:element name="courses" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="coursesid" type="xsd:integer" maxOccurs="1"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="course-type">
+        <xsd:sequence>
+            <xsd:element name="courseid" type="xsd:integer"></xsd:element>
+            <xsd:element name="title" type="tns:strings"></xsd:element>
+            <xsd:element name="author" type="tns:strings" minOccurs="0"></xsd:element>
+            <xsd:element name="tasks" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="practic-task-id" type="xsd:integer"></xsd:element>
+                        <xsd:element name="theory-task-id" type="xsd:integer"></xsd:element>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="practic-task">
+        <xsd:sequence>
+            <xsd:element name="practic-task-id" type="xsd:integer"></xsd:element>
+            <xsd:element name="title" type="tns:strings"></xsd:element>
+            <xsd:element name="duration" type="xsd:integer"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="type" type="xsd:string" fixed="practic"/>
+    </xsd:complexType>
+    <xsd:complexType name="theory-task">
+        <xsd:sequence>
+            <xsd:element name="theory-task-id" type="xsd:integer"></xsd:element>
+            <xsd:element name="title" type="tns:strings"></xsd:element>
+            <xsd:element name="duration" type="xsd:integer"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="type" type="xsd:string" fixed="theory"/>
+    </xsd:complexType>
+    <xsd:element name="root">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="report" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="studentid" type="xsd:integer"></xsd:element>
+                            <xsd:element name="theorytask" maxOccurs="unbounded" minOccurs="0">
+                                <xsd:complexType>
+                                    <xsd:group xmlns:tns="http://xml.netbeans.org/schema/Cirriculum" ref="tns:theoryTaskAttrs"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="practictask" maxOccurs="unbounded" minOccurs="0">
+                                <xsd:complexType>
+                                    <xsd:group ref="tns:practicTaskAttrs"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="courseid" type="xsd:integer"></xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="students" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="student" type="tns:student-type" maxOccurs="unbounded"></xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="programms" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="programm" type="tns:programm-type" maxOccurs="unbounded">
+                                <xsd:key name="uniquecourses">
+                                    <xsd:selector xpath="tns:courses"/>
+                                    <xsd:field xpath="tns:coursesid"/>
+                                </xsd:key>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="courses" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="course" type="tns:course-type" maxOccurs="unbounded"></xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="practic-tasks" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="practic-task" type="tns:practic-task" maxOccurs="unbounded"></xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="theory-tasks" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                           <xsd:element name="theory-task" type="tns:theory-task" maxOccurs="unbounded"></xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+        <xsd:key name="student-pk">
+            <xsd:selector xpath="tns:students/tns:student"/>
+            <xsd:field xpath="tns:studentid"/>
+        </xsd:key>
+        <xsd:key name="programm-pk">
+            <xsd:selector xpath="tns:programms/tns:programm"/>
+            <xsd:field xpath="tns:programmid"/>
+        </xsd:key>
+        <xsd:key name="course-pk">
+            <xsd:selector xpath="tns:courses/tns:course"/>
+            <xsd:field xpath="tns:courseid"/>
+        </xsd:key>
+        <xsd:key name="practic-task-pk">
+            <xsd:selector xpath="tns:practic-tasks/tns:practic-task"/>
+            <xsd:field xpath="tns:practic-task-id"/>
+        </xsd:key>
+        <xsd:key name="theory-task-pk">
+            <xsd:selector xpath="tns:theory-tasks/tns:theory-task"/>
+            <xsd:field xpath="tns:theory-task-id"/>
+        </xsd:key>
+        <xsd:key name="report-pk">
+            <xsd:selector xpath="tns:report"/>
+            <xsd:field xpath="tns:studentid"/>
+            <xsd:field xpath="tns:courseid"/>
+        </xsd:key>
+        <xsd:keyref name="student-programm" refer="tns:programm-pk">
+            <xsd:selector xpath="tns:students/tns:student"/>
+            <xsd:field xpath="tns:programmid"/>
+        </xsd:keyref>
+        <xsd:keyref name="programm-courses" refer="tns:course-pk">
+            <xsd:selector xpath="tns:programms/tns:programm/tns:courses"/>          
+            <xsd:field xpath="tns:coursesid"/>
+        </xsd:keyref>
+        <xsd:keyref name="course-practicTasks" refer="tns:practic-task-pk">
+            <xsd:selector xpath="tns:courses/tns:course/tns:tasks"/>
+            <xsd:field xpath="tns:practic-task-id"/>
+        </xsd:keyref>
+        <xsd:keyref name="course-theoryTasks" refer="tns:theory-task-pk">
+            <xsd:selector xpath="tns:courses/tns:course/tns:tasks"/>
+            <xsd:field xpath="tns:theory-task-id"/>
+        </xsd:keyref>
+    </xsd:element>
+    <xsd:simpleType name="practicTaskState">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="makingNotBegin"/>
+            <xsd:enumeration value="makingInprocess"/>
+            <xsd:enumeration value="exercizeChecking"/>
+            <xsd:enumeration value="exercizeDone"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="theoryTaskState">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="learningNotBegin"/>
+            <xsd:enumeration value="learningInProcess"/>
+            <xsd:enumeration value="learningEnded"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ball">
+        <xsd:restriction base="xsd:integer">
+            <xsd:maxInclusive value="5"/>
+            <xsd:minInclusive value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="strings">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="70"/>
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="email">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:group name="practicTaskAttrs">
+        <xsd:sequence>
+            <xsd:element name="practictaskid" type="xsd:integer"></xsd:element>
+            <xsd:element name="practictaskstate" type="tns:practicTaskState"></xsd:element>
+            <xsd:element name="balls" type="tns:ball" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+    <xsd:group name="theoryTaskAttrs">
+        <xsd:sequence>
+            <xsd:element name="theorytaskid" type="xsd:integer"></xsd:element>
+            <xsd:element name="theorytaskstate" type="tns:theoryTaskState"></xsd:element>
+            <xsd:element name="balls" type="tns:ball" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+</xsd:schema>
