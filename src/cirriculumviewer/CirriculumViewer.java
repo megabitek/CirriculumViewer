@@ -5,9 +5,11 @@
  */
 package cirriculumviewer;
 
+import domain.Course;
 import domain.Programm;
 import domain.ReportString;
 import domain.Student;
+import domain.Task;
 import java.io.File;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -53,7 +55,28 @@ public class CirriculumViewer {
          for (Programm programm : handler.programmList) {
             System.out.println(programm);
         }
-
+  System.out.println("**********************************************");
+        System.out.println("course's list:");
+        
+         for (Course course : handler.courseList) {
+            System.out.println(course);
+        }
+          for (Programm programm : handler.programmList) {
+            System.out.println(programm);
+        }
+  System.out.println("**********************************************");
+        System.out.println("practic task's list:");
+        
+         for (Task task : handler.practicTasksList) {
+            System.out.println(task);
+        }
+         
+          System.out.println("**********************************************");
+        System.out.println("theory task's list:");
+        
+         for (Task task : handler.theoryTasksList) {
+            System.out.println(task);
+        }
     }
 
 }

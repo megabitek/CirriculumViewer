@@ -29,36 +29,36 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Elena_Kholkina
  */
 class SAXHandler extends DefaultHandler {
-
+    
     List<ReportString> reportList = new ArrayList<>();
     ReportString reportString = null;
     ArrayList<TaskString> theoryTasks = null;
     ArrayList<TaskString> practicTasks = null;
     private TaskString taskStr;
-
+    
     List<Student> studentList = new ArrayList<>();
     Student student = null;
-
+    
     List<Programm> programmList = new ArrayList();
     Programm programm = null;
-
+    
     ArrayList<Course> courseList = new ArrayList();
-
+    
     Course course = null;
-
+    
     ArrayList<Task> practicTasksList = new ArrayList();
     ArrayList<Task> theoryTasksList = new ArrayList();
     Task task = null;
-
+    
     String content = null;
-
+    
     @Override
     public void startElement(String uri, String localName,
             String qName, Attributes attributes)
             throws SAXException {
-
+        
         switch (qName) {
-
+            
             case "report": {
                 reportString = new ReportString();
                 theoryTasks = new ArrayList();
@@ -68,7 +68,7 @@ class SAXHandler extends DefaultHandler {
                 System.out.println("teg report");
                 break;
             }
-
+            
             case "theorytask": {
                 taskStr = new TaskString();
                 break;
@@ -80,14 +80,14 @@ class SAXHandler extends DefaultHandler {
             case "student": {
                 student = new Student();
                 System.out.println("teg students");
-
+                
                 break;
             }
             case "programm": {
                 programm = new Programm();
                 programm.setCourses(new ArrayList());
                 System.out.println("teg programms");
-
+                
                 break;
             }
             case "course": {
@@ -101,13 +101,15 @@ class SAXHandler extends DefaultHandler {
             }
             case "practic-task": {
                 task = new Task();
-            }
+                task.setType(Task.TaskType.PRACTIC_TASK);
+            break; }
             case "theory-task": {
                 task = new Task();
-            }
+            task.setType(Task.TaskType.THEORY_TASK);
+            break;}
         }
     }
-
+    
     @Override
     public void endElement(String uri, String localName,
             String qName) throws SAXException {
@@ -119,7 +121,7 @@ class SAXHandler extends DefaultHandler {
                  taskStr = null;*/
                 break;
             }
-
+            
             case "studentid": {
                 int studentid = Integer.parseInt(content);
                 if (student == null) {
@@ -159,9 +161,11 @@ class SAXHandler extends DefaultHandler {
                 break;
             }
             case "courseid": {
-
-                reportString.setCourseId(Integer.parseInt(content));
-
+                if (course != null) {
+                    course.setId(Integer.parseInt(content));
+                } else {
+                    reportString.setCourseId(Integer.parseInt(content));
+                }
                 break;
             }
             /*Student parsing*/
@@ -178,7 +182,7 @@ class SAXHandler extends DefaultHandler {
                 break;
             }
             case "date-learning-begin": {
-
+                
                 Date docDate = getDateByTag(content);
                 if (docDate != null) {
                     student.setLearningBeginDate(docDate);
@@ -205,7 +209,7 @@ class SAXHandler extends DefaultHandler {
             case "title": {
                 if (task == null) {
                     if (course == null) {
-
+                        
                         programm.setTitle(content);
                     } else {
                         course.setTitle(content);
@@ -216,16 +220,16 @@ class SAXHandler extends DefaultHandler {
                 break;
             }
             case "author": {
-
+                
                 if (course == null) {
-
+                    
                     programm.setAuthor(content);
                 } else {
                     course.setAuthor(content);
                 }
-
+                
                 break;
-
+                
             }
             case "creation-date": {
                 Date docDate = getDateByTag(content);
@@ -235,12 +239,45 @@ class SAXHandler extends DefaultHandler {
                 break;
             }
             case "coursesid": {
+                
                 programm.getCourses().add(Integer.parseInt(content));
+                
                 break;
+            }
+            case "theory-task-id": {
+                if (task == null) {
+                    course.getTheoryTasks().add(Integer.parseInt(content));
+                } else {
+                    task.setID(Integer.parseInt(content));
+                }
+                break;
+            }
+            case "practic-task-id": {
+                if (task == null) {
+                    course.getPracticTasks().add(Integer.parseInt(content));
+                } else {
+                    task.setID(Integer.parseInt(content));
+                }
+                break;
+            }
+            case "course": {
+                courseList.add(course);
+                break;
+            }
+            case "practic-task": {
+                practicTasksList.add(task);
+                break;
+            }
+            case "theory-task": {
+                theoryTasksList.add(task);
+                break;
+            }
+            case "duration": {
+                task.setDuration(Integer.parseInt(content));
             }
         }
     }
-
+    
     TaskState getTaskStateByString(String str) {
         switch (str) {
             case "makingNotBegin":
@@ -260,15 +297,15 @@ class SAXHandler extends DefaultHandler {
             default:
                 return null;
         }
-
+        
     }
-
+    
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         content = String.copyValueOf(ch, start, length).trim();
-        System.out.println(content);
+        // System.out.println(content);
     }
-
+    
     public Date getDateByTag(String content) {
         SimpleDateFormat format = new SimpleDateFormat();
         format.applyPattern("yyyy-mm-dd");

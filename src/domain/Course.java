@@ -7,6 +7,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
@@ -84,4 +85,18 @@ public class Course {
     public  ArrayList<Integer> getPracticTasks() {
         return this.practicTasks;
     } 
+    @Override
+    public String toString (){
+    String practicTasksStr = new String();
+    String theoryTasksStr = new String();
+    for (Iterator i= this.practicTasks.iterator(); i.hasNext();)
+    {
+    practicTasksStr +=i.next();
+    practicTasksStr+=", ";}
+     for (Iterator i= this.theoryTasks.iterator(); i.hasNext();)
+    {
+    theoryTasksStr +=i.next();
+    practicTasksStr+=", ";}
+     
+     return "id: "+ id+  " title: "+ title+ " author: "+author + " theory task:"+ theoryTasksStr+ " practic task: "+ practicTasksStr;}
 }
