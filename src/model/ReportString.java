@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package model;
 
-import domain.Task.TaskState;
+import model.Task.TaskState;
 import java.util.ArrayList;
 import java.util.Iterator;
 

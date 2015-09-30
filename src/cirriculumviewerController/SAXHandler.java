@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cirriculumviewer;
+package cirriculumviewerController;
 
-import domain.Course;
-import domain.Programm;
-import domain.ReportString;
-import domain.Student;
-import domain.Task;
-import domain.Task.TaskState;
-import domain.TaskString;
+import model.Course;
+import model.Programm;
+import model.ReportString;
+import model.Student;
+import model.Task;
+import model.Task.TaskState;
+import model.TaskString;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

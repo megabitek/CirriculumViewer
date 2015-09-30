@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cirriculumviewer;
+package cirriculumviewerController;
 
-import domain.Course;
-import domain.Programm;
-import domain.ReportString;
-import domain.Student;
-import domain.Task;
+import model.Course;
+import model.Programm;
+import model.ReportString;
+import model.Student;
+import model.Task;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.JFrame;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
+import view.MainFrame;
 
 /**
  *
@@ -77,6 +79,9 @@ public class CirriculumViewer {
          for (Task task : handler.theoryTasksList) {
             System.out.println(task);
         }
+         MainFrame frame = new MainFrame(handler.reportList);
+         
     }
+
 
 }
