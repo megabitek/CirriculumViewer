@@ -15,9 +15,10 @@ import model.TaskString;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.xml.sax.Attributes;
@@ -29,46 +30,46 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Elena_Kholkina
  */
 class SAXHandler extends DefaultHandler {
-    
-    List<ReportString> reportList = new ArrayList<>();
-    ReportString reportString = null;
-    ArrayList<TaskString> theoryTasks = null;
-    ArrayList<TaskString> practicTasks = null;
+
+    public ArrayList<ReportString> reportList = new ArrayList<>();
+    private ReportString reportString = null;
+    private ArrayList<TaskString> theoryTasks = null;
+    private ArrayList<TaskString> practicTasks = null;
     private TaskString taskStr;
-    
-    List<Student> studentList = new ArrayList<>();
-    Student student = null;
-    
-    List<Programm> programmList = new ArrayList();
-    Programm programm = null;
-    
-    ArrayList<Course> courseList = new ArrayList();
-    
-    Course course = null;
-    
-    ArrayList<Task> practicTasksList = new ArrayList();
-    ArrayList<Task> theoryTasksList = new ArrayList();
-    Task task = null;
-    
-    String content = null;
-    
+
+    public HashMap<Integer, Student> studentList = new HashMap();
+    private Student student = null;
+
+    public HashMap<Integer, Programm> programmList = new HashMap();
+    private Programm programm = null;
+
+    public HashMap<Integer, Course> courseList = new HashMap();
+
+    private Course course = null;
+
+    public HashMap<Integer, Task> practicTasksList = new HashMap();
+    public HashMap<Integer, Task> theoryTasksList = new HashMap();
+    private Task task = null;
+
+    private String content = null;
+
     @Override
     public void startElement(String uri, String localName,
             String qName, Attributes attributes)
             throws SAXException {
-        
+
         switch (qName) {
-            
+
             case "report": {
                 reportString = new ReportString();
                 theoryTasks = new ArrayList();
                 reportString.setTheoryTasksId(theoryTasks);
                 practicTasks = new ArrayList();
                 reportString.setPracticTasksId(practicTasks);
-                System.out.println("teg report");
+              
                 break;
             }
-            
+
             case "theorytask": {
                 taskStr = new TaskString();
                 break;
@@ -79,22 +80,22 @@ class SAXHandler extends DefaultHandler {
             }
             case "student": {
                 student = new Student();
-                System.out.println("teg students");
-                
+               
+
                 break;
             }
             case "programm": {
                 programm = new Programm();
                 programm.setCourses(new ArrayList());
-                System.out.println("teg programms");
-                
+               
+
                 break;
             }
             case "course": {
                 course = new Course();
                 course.setTheoryTasks(new ArrayList());
                 course.setPracticTasks(new ArrayList());
-                System.out.println("teg courses");
+              
                 /* student = new Student();
                  student.id = attributes.getValue("studentid");*/
                 break;
@@ -102,14 +103,16 @@ class SAXHandler extends DefaultHandler {
             case "practic-task": {
                 task = new Task();
                 task.setType(Task.TaskType.PRACTIC_TASK);
-            break; }
+                break;
+            }
             case "theory-task": {
                 task = new Task();
-            task.setType(Task.TaskType.THEORY_TASK);
-            break;}
+                task.setType(Task.TaskType.THEORY_TASK);
+                break;
+            }
         }
     }
-    
+
     @Override
     public void endElement(String uri, String localName,
             String qName) throws SAXException {
@@ -121,7 +124,7 @@ class SAXHandler extends DefaultHandler {
                  taskStr = null;*/
                 break;
             }
-            
+
             case "studentid": {
                 int studentid = Integer.parseInt(content);
                 if (student == null) {
@@ -170,7 +173,7 @@ class SAXHandler extends DefaultHandler {
             }
             /*Student parsing*/
             case "student": {
-                studentList.add(student);
+                studentList.put(student.getId(), student);
                 break;
             }
             case "name": {
@@ -182,7 +185,7 @@ class SAXHandler extends DefaultHandler {
                 break;
             }
             case "date-learning-begin": {
-                
+
                 Date docDate = getDateByTag(content);
                 if (docDate != null) {
                     student.setLearningBeginDate(docDate);
@@ -203,13 +206,13 @@ class SAXHandler extends DefaultHandler {
             }
             /*Programm parsing*/
             case "programm": {
-                programmList.add(programm);
+                programmList.put(programm.getId(), programm);
                 break;
             }
             case "title": {
                 if (task == null) {
                     if (course == null) {
-                        
+
                         programm.setTitle(content);
                     } else {
                         course.setTitle(content);
@@ -220,16 +223,16 @@ class SAXHandler extends DefaultHandler {
                 break;
             }
             case "author": {
-                
+
                 if (course == null) {
-                    
+
                     programm.setAuthor(content);
                 } else {
                     course.setAuthor(content);
                 }
-                
+
                 break;
-                
+
             }
             case "creation-date": {
                 Date docDate = getDateByTag(content);
@@ -239,9 +242,9 @@ class SAXHandler extends DefaultHandler {
                 break;
             }
             case "coursesid": {
-                
+
                 programm.getCourses().add(Integer.parseInt(content));
-                
+
                 break;
             }
             case "theory-task-id": {
@@ -261,15 +264,15 @@ class SAXHandler extends DefaultHandler {
                 break;
             }
             case "course": {
-                courseList.add(course);
+                courseList.put(course.getId(), course);
                 break;
             }
             case "practic-task": {
-                practicTasksList.add(task);
+                practicTasksList.put(task.getID(), task);
                 break;
             }
             case "theory-task": {
-                theoryTasksList.add(task);
+                theoryTasksList.put(task.getID(), task);
                 break;
             }
             case "duration": {
@@ -277,7 +280,7 @@ class SAXHandler extends DefaultHandler {
             }
         }
     }
-    
+
     TaskState getTaskStateByString(String str) {
         switch (str) {
             case "makingNotBegin":
@@ -297,15 +300,15 @@ class SAXHandler extends DefaultHandler {
             default:
                 return null;
         }
-        
+
     }
-    
+
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         content = String.copyValueOf(ch, start, length).trim();
         // System.out.println(content);
     }
-    
+
     public Date getDateByTag(String content) {
         SimpleDateFormat format = new SimpleDateFormat();
         format.applyPattern("yyyy-mm-dd");

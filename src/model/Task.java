@@ -69,5 +69,5 @@ public class Task {
     }
     @Override
     public String toString(){
-return "id: "+id+" title: "+ title+ " duration: "+ duration + " type "+ type;}
+return "id: "+id+"\n title: "+ title+ "\n duration: "+ duration + "\n type "+ type;}
 }

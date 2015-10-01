@@ -20,6 +20,7 @@ public class Programm {
     private String author;
     private Date creationDate;
     private ArrayList<Integer> courses;
+    private ArrayList<Course> coursesObbjects;
 
     /* public Programm(int id, String title, String author, Date creationDate, int[] course) {
      this.id = id;
@@ -66,10 +67,22 @@ public class Programm {
     public ArrayList<Integer> getCourses() {
         return this.courses;
     }
+
+    public void setCoursesObjects(ArrayList<Course> course) {
+        this.coursesObbjects = course;
+    }
+
+    public ArrayList<Course> getCoursesObjects() {
+        return this.coursesObbjects;
+    }
+
     @Override
-    public String toString(){
-        String courseString = new String ();
-        for (Iterator<Integer> i = courses.listIterator(); i.hasNext();){
-        courseString += i.next();
-        courseString +=", ";}
-  return "id"+ id+", title:"+ title+ ", author: "+ author+" date: "+creationDate + " course:"+ courseString;}}
+    public String toString() {
+        String courseString = new String();
+        for (Iterator<Course> i = this.coursesObbjects.listIterator(); i.hasNext();) {
+            courseString += i.next().getTitle();
+            courseString += ",\n ";
+        }
+        return "id: " + id + ", \n title:" + title + ", \n author: " + author + " \n date: " + creationDate + " \n course:" + courseString;
+    }
+}

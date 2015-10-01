@@ -5,6 +5,7 @@
  */
 package view;
 
+import cirriculumviewerController.Controller;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,53 +21,67 @@ import model.ReportString;
 public class MainFrame extends JFrame {
 
     private JTree tree;
-  //  private ArrayList<ReportString> reportStrings ; 
+    Controller controller = new Controller();
+    //  private JTree tree;
 
     public MainFrame(List<ReportString> reportStrings) {
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Report");
         tree = new JTree(root);
+
         //create the child nodes
-        int studentId=0;
+        int studentId = 0;
+        int courseId = 0;
         DefaultMutableTreeNode studentNode = new DefaultMutableTreeNode();
-        for (Iterator <ReportString> i = reportStrings.iterator(); i.hasNext();){
-        ReportString rStr = i.next(); 
-        if (rStr.getStudentId() == studentId){
-        studentNode.add(new DefaultMutableTreeNode(rStr.getCourseId()));
-            //добавляем в предыдущий нод
-        }else{
-        studentNode = new DefaultMutableTreeNode(rStr.getStudentId());
-        studentId=rStr.getStudentId();
-        root.add(studentNode);
-            //создаем новый нод и студент ид переопределяем
-        }}
-        
-        /*DefaultMutableTreeNode vegetableNode = new DefaultMutableTreeNode("Student 1");
-        DefaultMutableTreeNode courseNole = new DefaultMutableTreeNode("course 1"); 
-        
-        vegetableNode.add(new DefaultMutableTreeNode("Capsicum"));
-        vegetableNode.add(new DefaultMutableTreeNode("Carrot"));
-        vegetableNode.add(new DefaultMutableTreeNode("Tomato   "));
-        vegetableNode.add(new DefaultMutableTreeNode("Potato"));
-        DefaultMutableTreeNode fruitNode = new DefaultMutableTreeNode("Student 2");
-        fruitNode.add(new DefaultMutableTreeNode("Banana"));
-        fruitNode.add(new DefaultMutableTreeNode("Mango"));
-        fruitNode.add(new DefaultMutableTreeNode("Apple"));
-        fruitNode.add(new DefaultMutableTreeNode("Grapes"));
-        fruitNode.add(new DefaultMutableTreeNode("Orange"));
-        //add the child nodes to the root node
-        root.add(vegetableNode);
-        root.add(fruitNode);*/
+        DefaultMutableTreeNode programmNode = new DefaultMutableTreeNode();
+        DefaultMutableTreeNode courseNode = new DefaultMutableTreeNode();
+        for (Iterator<ReportString> i = reportStrings.iterator(); i.hasNext();) {
+            ReportString rStr = i.next();
+            if (rStr.getStudentId() == studentId) {
 
-        //create the tree by passing in the root node
-      //  tree = new JTree(root);
-        add(tree);
+                courseNode = new DefaultMutableTreeNode(controller.getCourseById(rStr.getCourseId()).getTitle());
+                for (int j = 0; j < rStr.getPracticTasksId().size(); j++) {
+                    DefaultMutableTreeNode taskNode = new DefaultMutableTreeNode(controller.getPracticTaskById(rStr.getPracticTasksId().get(j).getTaskID()).getTitle());
+                    courseNode.add(taskNode);
+                }
+                for (int j = 0; j < rStr.getTheoryTasksId().size(); j++) {
+                    DefaultMutableTreeNode taskNode = new DefaultMutableTreeNode(controller.getTheoryTaskById(rStr.getTheoryTasksId().get(j).getTaskID()).getTitle());
+                    courseNode.add(taskNode);
+                }
+                programmNode.add(courseNode);// добавляем курсы!!
+                //добавляем в предыдущий нод
+            } else {
+                studentNode = new DefaultMutableTreeNode(controller.getStudentById(rStr.getStudentId()).getFullName());//Студент!!!!!! 
+                programmNode = new DefaultMutableTreeNode(controller.getStudentById(rStr.getStudentId()).getProgrammObject().getTitle());   //Программа!!!  
+                courseNode = new DefaultMutableTreeNode(controller.getCourseById(rStr.getCourseId()).getTitle()); //курс!!!!!!!! 
+                for (int j = 0; j < rStr.getPracticTasksId().size(); j++) {
+                    DefaultMutableTreeNode taskNode = new DefaultMutableTreeNode(controller.getPracticTaskById(rStr.getPracticTasksId().get(j).getTaskID()).getTitle());
 
-        setTitle("Cirriculum ");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
-        setVisible(true);
-    
-      
+                    courseNode.add(taskNode);
+                    DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getTaskState().toString());
+                    taskNode.add(taskState);
+                    DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getBalls());
+                    taskNode.add(taskBall);
+                }
+                for (int j = 0; j < rStr.getTheoryTasksId().size(); j++) {
+                    DefaultMutableTreeNode taskNode = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getTaskID());
+                    courseNode.add(taskNode);
+                }
+
+                studentId = rStr.getStudentId();
+                root.add(studentNode);
+                studentNode.add(programmNode);
+                programmNode.add(courseNode);
+                //создаем новый нод и студент ид переопределяем
+
+            }
+
+            add(tree);
+            add(tree);
+            setTitle("Cirriculum ");
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setSize(400, 300);
+            setVisible(true);
+
+        }
     }
-    
 }

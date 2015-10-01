@@ -20,8 +20,10 @@ public class Course {
     private String author;
     private Date creationDate;
     private ArrayList<Integer> practicTasks;
+    private ArrayList<Task> practicTasksObjects;
     private ArrayList<Integer> theoryTasks; 
-
+    private ArrayList<Task> theoryTasksObjects;
+    
     public Course(int id, String title) {
         this.id = id;
         this.title = title;
@@ -85,18 +87,33 @@ public class Course {
     public  ArrayList<Integer> getPracticTasks() {
         return this.practicTasks;
     } 
+    
+     public void setTheoryTasksObjects( ArrayList<Task>  tasks) {
+        this.theoryTasksObjects = tasks;
+    }
+
+    public  ArrayList<Task> getTheoryTasksObjects() {
+        return this.theoryTasksObjects;
+    }
+    public void setPracticTasksObjects( ArrayList<Task>  tasks) {
+        this.practicTasksObjects = tasks;
+    }
+
+    public  ArrayList<Task> getPracticTasksObjects() {
+        return this.practicTasksObjects;
+    } 
     @Override
     public String toString (){
     String practicTasksStr = new String();
     String theoryTasksStr = new String();
-    for (Iterator i= this.practicTasks.iterator(); i.hasNext();)
+    for (Iterator<Task> i= this.practicTasksObjects.iterator(); i.hasNext();)
     {
-    practicTasksStr +=i.next();
-    practicTasksStr+=", ";}
-     for (Iterator i= this.theoryTasks.iterator(); i.hasNext();)
+    practicTasksStr +=i.next().getTitle();
+    practicTasksStr+=", \n";}
+     for (Iterator<Task> i= this.theoryTasksObjects.iterator(); i.hasNext();)
     {
-    theoryTasksStr +=i.next();
-    practicTasksStr+=", ";}
+    theoryTasksStr +=i.next().getTitle();
+    practicTasksStr+=", \n ";}
      
-     return "id: "+ id+  " title: "+ title+ " author: "+author + " theory task:"+ theoryTasksStr+ " practic task: "+ practicTasksStr;}
+     return "id: "+ id+  "\n  title: "+ title+ "\n author: "+author + "\n theory task:"+ theoryTasksStr+ "\n practic task: "+ practicTasksStr;}
 }

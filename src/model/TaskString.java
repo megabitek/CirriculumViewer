@@ -16,7 +16,8 @@ public class TaskString {
     private int taskid;
     private TaskState taskState;
     private int balls;
-
+    private Task task;
+    
     public TaskString() {
     }
 
@@ -42,5 +43,12 @@ public class TaskString {
 
     public int getBalls() {
         return this.balls;
+    }
+     public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public Task getTask() {
+        return this.task;
     }
 }

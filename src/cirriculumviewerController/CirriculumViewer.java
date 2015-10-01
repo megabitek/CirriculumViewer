@@ -12,10 +12,14 @@ import model.Student;
 import model.Task;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import model.TaskString;
 import org.xml.sax.SAXException;
 import view.MainFrame;
 
@@ -25,63 +29,61 @@ import view.MainFrame;
  */
 public class CirriculumViewer {
 
+   
+
     /**
      * @param args the command line arguments
+     * @throws javax.xml.parsers.ParserConfigurationException
+     * @throws org.xml.sax.SAXException
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
         // TODO code application logic here
 
-        SAXParserFactory parserFactor = SAXParserFactory.newInstance();
-
-        SAXParser parser = parserFactor.newSAXParser();
-
-        SAXHandler handler = new SAXHandler();
-
-        parser.parse(new File("Cirriculum.xml"), handler);
-
-        for (ReportString reportStr : handler.reportList) {
-
-            System.out.println(reportStr);
-
-        }
-        System.out.println("**********************************************");
-        System.out.println("Student's list:");
-
-        for (Student student : handler.studentList) {
-            System.out.println(student);
-        }
-
-        System.out.println("**********************************************");
-        System.out.println("programm's list:");
         
-         for (Programm programm : handler.programmList) {
-            System.out.println(programm);
-        }
-  System.out.println("**********************************************");
-        System.out.println("course's list:");
-        
-         for (Course course : handler.courseList) {
-            System.out.println(course);
-        }
-          for (Programm programm : handler.programmList) {
-            System.out.println(programm);
-        }
-  System.out.println("**********************************************");
-        System.out.println("practic task's list:");
-        
-         for (Task task : handler.practicTasksList) {
-            System.out.println(task);
-        }
-         
-          System.out.println("**********************************************");
-        System.out.println("theory task's list:");
-        
-         for (Task task : handler.theoryTasksList) {
-            System.out.println(task);
-        }
-         MainFrame frame = new MainFrame(handler.reportList);
-         
+
+        /* for (ReportString reportStr : handler.reportList) {
+
+         System.out.println(reportStr);
+
+         }/*
+         System.out.println("**********************************************");
+         System.out.println("Student's list:");
+
+         for (Map.Entry<Integer, Student> entry : handler.studentList.entrySet()) {
+         System.out.printf("key = %s, value = %s\r\n", entry.getKey(), entry.getValue());
+         }
+
+         System.out.println("**********************************************");
+         System.out.println("programm's list:");
+
+         for (Map.Entry<Integer, Programm> entry : handler.programmList.entrySet()) {
+         System.out.printf("key = %s, value = %s\r\n", entry.getKey(), entry.getValue());
+         }
+         System.out.println("**********************************************");
+         System.out.println("course's list:");
+
+         for (Map.Entry<Integer, Course > entry : handler.courseList.entrySet()) {
+         System.out.printf("key = %s, value = %s\r\n", entry.getKey(), entry.getValue());
+         }
+       
+         System.out.println("**********************************************");
+         System.out.println("practic task's list:");
+
+         for (Map.Entry<Integer, Task> entry : handler.practicTasksList.entrySet()) {
+         System.out.printf("key = %s, value = %s\r\n", entry.getKey(), entry.getValue());
+         }
+         System.out.println("**********************************************");
+         System.out.println("theory task's list:");
+
+         for (Map.Entry<Integer, Task> entry : handler.theoryTasksList.entrySet()) {
+         System.out.printf("key = %s, value = %s\r\n", entry.getKey(), entry.getValue());
+         }*/
+        Controller controller = new Controller();
+        controller.init();
+        MainFrame frame = new MainFrame(controller.getReportStrings());
+
     }
 
-
+   
 }

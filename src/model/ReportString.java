@@ -51,7 +51,7 @@ public class ReportString {
         this.practicTasksId = practicTasksId;
     }
 
-    public ArrayList<TaskString> getPracticTasksTaskId() {
+    public ArrayList<TaskString> getPracticTasksId() {
         return this.practicTasksId;
     }
 
