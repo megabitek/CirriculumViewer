@@ -9,7 +9,7 @@
 -->
 
 <root  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-       xmlns:ns0='http://xml.netbeans.org/schema/Cirriculum'
+       xmlns='http://xml.netbeans.org/schema/Cirriculum'
        xsi:schemaLocation='http://xml.netbeans.org/schema/Cirriculum Cirriculum.xsd'>
     <report>
         <studentid>1</studentid>
@@ -610,7 +610,7 @@
         </theory-task>
         <theory-task type="theory">
             <theory-task-id>6</theory-task-id>
-            <itle>Struts Framework Fundamentals</itle>
+            <title>Struts Framework Fundamentals</title>
             <duration>8</duration>
         </theory-task>
         <theory-task type="theory">

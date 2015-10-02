@@ -94,6 +94,9 @@ public class Student {
     }
     @Override
     public String toString(){
+        return this.fullName;
+    }
+    public String getDescription(){
         return "id: "+id+ ",\n Name:"+ fullName+",\n e-mail: "+ eMail+ ",\n date learning begin: "+ learningBeginDate + ",\n contract: "+ contract+ ",\n programm: " + this.programmObject.getTitle();
     }
 }

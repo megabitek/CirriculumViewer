@@ -76,13 +76,17 @@ public class Programm {
         return this.coursesObbjects;
     }
 
-    @Override
-    public String toString() {
+ 
+    public String getDescription() {
         String courseString = new String();
         for (Iterator<Course> i = this.coursesObbjects.listIterator(); i.hasNext();) {
             courseString += i.next().getTitle();
             courseString += ",\n ";
         }
         return "id: " + id + ", \n title:" + title + ", \n author: " + author + " \n date: " + creationDate + " \n course:" + courseString;
+    }
+    @Override
+    public String toString (){
+        return this.title;
     }
 }

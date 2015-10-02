@@ -8,7 +8,7 @@
         Purpose of the document follows.
 -->
 
-<root  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+<ns0:root  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
        xmlns:ns0='http://xml.netbeans.org/schema/Cirriculum'
        xsi:schemaLocation='http://xml.netbeans.org/schema/Cirriculum Cirriculum.xsd'>
     <report>
@@ -71,7 +71,7 @@
         </theorytask> 
         <practictask>
             <practictaskid>4</practictaskid>
-            <practictaskstate>makingInprocess</practictaskstate>
+            <practictaskstate>makingInProcess</practictaskstate>
                      
         </practictask>  
         <courseid>5</courseid>
@@ -245,7 +245,7 @@
         </theorytask> 
         <practictask>
             <practictaskid>3</practictaskid>
-            <practictaskstate>makingInprocess</practictaskstate>
+            <practictaskstate>makingInProcess</practictaskstate>
           
         </practictask>  
         <courseid>4</courseid>
@@ -628,4 +628,4 @@
                
     </theory-tasks>
 
-</root>
+</ns0:root>

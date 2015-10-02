@@ -11,8 +11,6 @@ package model;
  */
 public class Task {
 
-   
-
     public enum TaskState {
 
         LEARNING_NOT_BEGIN, LEARNING_IN_PROCESS, LEARNING_ENDED, MAKING_NOT_BEGIN, MAKING_IN_PROCESS, EXERCISE_CHEKING, EXERCISES_DONE
@@ -32,8 +30,8 @@ public class Task {
         this.title = title;
     }
 
-     public Task() {
-       
+    public Task() {
+
     }
 
     public void setID(int id) {
@@ -67,7 +65,13 @@ public class Task {
     public TaskType getType() {
         return this.type;
     }
+
     @Override
-    public String toString(){
-return "id: "+id+"\n title: "+ title+ "\n duration: "+ duration + "\n type "+ type;}
+    public String toString() {
+        return title;
+    }
+
+    public String getDescription() {
+        return "id: " + id + "\n title: " + title + "\n duration: " + duration + "\n type " + type;
+    }
 }
