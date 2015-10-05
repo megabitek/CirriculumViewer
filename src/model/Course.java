@@ -5,6 +5,7 @@
  */
 package model;
 
+import cirriculumviewerController.Controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -23,6 +24,7 @@ public class Course {
     private ArrayList<Task> practicTasksObjects;
     private ArrayList<Integer> theoryTasks;
     private ArrayList<Task> theoryTasksObjects;
+    private int duration;
 
     public Course(int id, String title) {
         this.id = id;
@@ -90,6 +92,7 @@ public class Course {
 
     public void setTheoryTasksObjects(ArrayList<Task> tasks) {
         this.theoryTasksObjects = tasks;
+        setDuration();
     }
 
     public ArrayList<Task> getTheoryTasksObjects() {
@@ -98,14 +101,38 @@ public class Course {
 
     public void setPracticTasksObjects(ArrayList<Task> tasks) {
         this.practicTasksObjects = tasks;
+        setDuration();
     }
 
     public ArrayList<Task> getPracticTasksObjects() {
         return this.practicTasksObjects;
     }
 
+    public void setDuration() {
+        int practicDuration = 0;
+        if (practicTasksObjects != null) {
+            for (Iterator<Task> it = practicTasksObjects.iterator(); it.hasNext();) {
+                practicDuration = practicDuration + it.next().getDuration();
+            }
+        }
+        int theoryDuration = 0;
+        if (theoryTasksObjects != null) {
+            for (Iterator<Task> it = theoryTasksObjects.iterator(); it.hasNext();) {
+                theoryDuration = theoryDuration + it.next().getDuration();
+            }
+        }
+        this.duration = practicDuration + theoryDuration;
+    }
+
+    public int getDuration() {
+        return this.duration;
+    }
+
     @Override
     public String toString() {
+        if (Controller.mouseClickMode) {
+            return getDescription();
+        }
         return this.title;
     }
 
@@ -121,7 +148,7 @@ public class Course {
             practicTasksStr += ", \n ";
         }
 
-        return "id: " + id + "\n  title: " + title + "\n author: " + author + "\n theory task:" + theoryTasksStr + "\n practic task: " + practicTasksStr;
-        
+        return "id: " + id + "\n  title: " + title + "\n author: " + author + "\n theory task:" + theoryTasksStr + "\n practic task: " + practicTasksStr + "\n duration: " + duration;
+
     }
 }

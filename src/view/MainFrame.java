@@ -46,55 +46,58 @@ public class MainFrame extends JFrame {
         for (Iterator<ReportString> i = reportStrings.iterator(); i.hasNext();) {
             ReportString rStr = i.next();
             if (rStr.getStudentId() == studentId) {
+                createCorseNode(courseNode, rStr, programmNode);
 
-                courseNode = new DefaultMutableTreeNode(controller.getCourseById(rStr.getCourseId()).getTitle());
-                DefaultMutableTreeNode taskNode;
-                for (int j = 0; j < rStr.getPracticTasksId().size(); j++) {
-                    taskNode = new DefaultMutableTreeNode();
-                    taskNode.setUserObject(controller.getPracticTaskById(rStr.getPracticTasksId().get(j).getTaskID()));
-                    taskNode = new DefaultMutableTreeNode();
-                    courseNode.add(taskNode);
-                    DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getTaskState().toString());
-                    taskNode.add(taskState);
-                    DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getBalls());
-                    taskNode.add(taskBall);
-                }
-                for (int j = 0; j < rStr.getTheoryTasksId().size(); j++) {
-                    taskNode = new DefaultMutableTreeNode(controller.getTheoryTaskById(rStr.getTheoryTasksId().get(j).getTaskID()));
-                    courseNode.add(taskNode);
-                    DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getTaskState().toString());
-                    taskNode.add(taskState);
-                    DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getBalls());
-                    taskNode.add(taskBall);
-                }
-                programmNode.add(courseNode);// добавляем курсы!!
+                /*  courseNode = new DefaultMutableTreeNode(controller.getCourseById(rStr.getCourseId()).getTitle());
+                 DefaultMutableTreeNode taskNode;
+                 for (int j = 0; j < rStr.getPracticTasksId().size(); j++) {
+                 taskNode = new DefaultMutableTreeNode();
+                 taskNode.setUserObject(controller.getPracticTaskById(rStr.getPracticTasksId().get(j).getTaskID()));
+                 taskNode = new DefaultMutableTreeNode();
+                 courseNode.add(taskNode);
+                 DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getTaskState().toString());
+                 taskNode.add(taskState);
+                 DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getBalls());
+                 taskNode.add(taskBall);
+                 }
+                 for (int j = 0; j < rStr.getTheoryTasksId().size(); j++) {
+                 taskNode = new DefaultMutableTreeNode(controller.getTheoryTaskById(rStr.getTheoryTasksId().get(j).getTaskID()));
+                 courseNode.add(taskNode);
+                 DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getTaskState().toString());
+                 taskNode.add(taskState);
+                 DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getBalls());
+                 taskNode.add(taskBall);
+                 }
+                 programmNode.add(courseNode);// добавляем курсы!!*/
                 //добавляем в предыдущий нод
             } else {
                 studentNode = new DefaultMutableTreeNode(controller.getStudentById(rStr.getStudentId()));//Студент!!!!!! 
-                programmNode = new DefaultMutableTreeNode(controller.getStudentById(rStr.getStudentId()).getProgrammObject());   //Программа!!!  
-                courseNode = new DefaultMutableTreeNode(controller.getCourseById(rStr.getCourseId())); //курс!!!!!!!! 
-                DefaultMutableTreeNode taskNode;
-                for (int j = 0; j < rStr.getPracticTasksId().size(); j++) {
-                    taskNode = new DefaultMutableTreeNode(controller.getPracticTaskById(rStr.getPracticTasksId().get(j).getTaskID()));
-                    courseNode.add(taskNode);
-                    DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getTaskState().toString());
-                    taskNode.add(taskState);
-                    DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getBalls());
-                    taskNode.add(taskBall);
-                }
-                for (int j = 0; j < rStr.getTheoryTasksId().size(); j++) {
-                    taskNode = new DefaultMutableTreeNode(controller.getTheoryTaskById(rStr.getTheoryTasksId().get(j).getTaskID()));
-                    courseNode.add(taskNode);
-                    DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getTaskState().toString());
-                    taskNode.add(taskState);
-                    DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getBalls());
-                    taskNode.add(taskBall);
-                }
 
+                programmNode = new DefaultMutableTreeNode(controller.getStudentById(rStr.getStudentId()).getProgrammObject());   //Программа!!!  
+                createCorseNode(courseNode, rStr, programmNode);
+                /*  courseNode = new DefaultMutableTreeNode(controller.getCourseById(rStr.getCourseId())); //курс!!!!!!!! 
+                 DefaultMutableTreeNode taskNode;
+                 for (int j = 0; j < rStr.getPracticTasksId().size(); j++) {
+                 taskNode = new DefaultMutableTreeNode(controller.getPracticTaskById(rStr.getPracticTasksId().get(j).getTaskID()));
+                 courseNode.add(taskNode);
+                 DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getTaskState().toString());
+                 taskNode.add(taskState);
+                 DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getBalls());
+                 taskNode.add(taskBall);
+                 }
+                 for (int j = 0; j < rStr.getTheoryTasksId().size(); j++) {
+                 taskNode = new DefaultMutableTreeNode(controller.getTheoryTaskById(rStr.getTheoryTasksId().get(j).getTaskID()));
+                 courseNode.add(taskNode);
+                 DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getTaskState().toString());
+                 taskNode.add(taskState);
+                 DefaultMutableTreeNode taskBall = new DefaultMutableTreeNode(rStr.getTheoryTasksId().get(j).getBalls());
+                 taskNode.add(taskBall);
+                 }
+                 */
                 studentId = rStr.getStudentId();
                 root.add(studentNode);
                 studentNode.add(programmNode);
-                programmNode.add(courseNode);
+                //  programmNode.add(courseNode);
                 //создаем новый нод и студент ид переопределяем
 
             }
@@ -103,18 +106,18 @@ public class MainFrame extends JFrame {
         final JTextArea field = new JTextArea();
         field.setLineWrap(true);
         tree.addMouseListener(new MouseAdapter() {
+           
             @Override
             public void mouseClicked(MouseEvent e) {
+                Controller.mouseClickMode =true; 
                 field.setText("");
                 TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
                 if (tp != null) {
                     String parentRez = "";
                     TreePath parentPath = tp.getParentPath();
                     if (parentPath != null) {
-                        //      String parent = parentPath.toString().replaceAll("[", "");
+                       
                         parentRez = parentPath.toString().replace("]", "");
-
-                        // System.out.println(parentPath.toString());
                     }
 
                     String strPath = tp.toString().replace(parentRez + ",", "");
@@ -123,6 +126,7 @@ public class MainFrame extends JFrame {
                 } else {
                     field.setText("");
                 }
+                  Controller.mouseClickMode =false; 
             }
 
         });
@@ -148,12 +152,12 @@ public class MainFrame extends JFrame {
     }
 
     public void createCorseNode(DefaultMutableTreeNode courseNode, ReportString rStr, DefaultMutableTreeNode programmNode) {
-        courseNode = new DefaultMutableTreeNode(controller.getCourseById(rStr.getCourseId()).getTitle());
+        courseNode = new DefaultMutableTreeNode(controller.getCourseById(rStr.getCourseId()));
         DefaultMutableTreeNode taskNode;
         for (int j = 0; j < rStr.getPracticTasksId().size(); j++) {
             taskNode = new DefaultMutableTreeNode();
             taskNode.setUserObject(controller.getPracticTaskById(rStr.getPracticTasksId().get(j).getTaskID()));
-            taskNode = new DefaultMutableTreeNode();
+
             courseNode.add(taskNode);
             DefaultMutableTreeNode taskState = new DefaultMutableTreeNode(rStr.getPracticTasksId().get(j).getTaskState().toString());
             taskNode.add(taskState);

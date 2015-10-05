@@ -5,6 +5,7 @@
  */
 package model;
 
+import cirriculumviewerController.Controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -19,6 +20,7 @@ public class Programm {
     private String title;
     private String author;
     private Date creationDate;
+    private int duration;
     private ArrayList<Integer> courses;
     private ArrayList<Course> coursesObbjects;
 
@@ -70,23 +72,37 @@ public class Programm {
 
     public void setCoursesObjects(ArrayList<Course> course) {
         this.coursesObbjects = course;
+        setDuration();
     }
 
     public ArrayList<Course> getCoursesObjects() {
         return this.coursesObbjects;
     }
 
- 
+    public void setDuration() {
+        int dur=0;
+        if (coursesObbjects != null) {
+            for (Iterator<Course> it = coursesObbjects.iterator(); it.hasNext();) {
+            dur += it.next().getDuration();
+            }
+            this.duration = dur; 
+        }
+    }
+
     public String getDescription() {
         String courseString = new String();
         for (Iterator<Course> i = this.coursesObbjects.listIterator(); i.hasNext();) {
             courseString += i.next().getTitle();
             courseString += ",\n ";
         }
-        return "id: " + id + ", \n title:" + title + ", \n author: " + author + " \n date: " + creationDate + " \n course:" + courseString;
+        return "id: " + id + ", \n title:" + title + ", \n author: " + author + " \n date: " + creationDate + " \n course:" + courseString+" \n duration: "+ duration;
     }
+
     @Override
-    public String toString (){
+    public String toString() {
+        if (Controller.mouseClickMode) {
+            return getDescription();
+        }
         return this.title;
     }
 }

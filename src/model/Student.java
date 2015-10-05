@@ -5,6 +5,7 @@
  */
 package model;
 
+import cirriculumviewerController.Controller;
 import java.util.Date;
 
 /**
@@ -19,6 +20,7 @@ public class Student {
     private String eMail;
     private boolean contract;
     private Date learningBeginDate;
+    private Date learningEndDate; 
     private int programmid;
     private Programm programmObject;
 
@@ -94,6 +96,9 @@ public class Student {
     }
     @Override
     public String toString(){
+        
+       
+        if (Controller.mouseClickMode) return getDescription();
         return this.fullName;
     }
     public String getDescription(){

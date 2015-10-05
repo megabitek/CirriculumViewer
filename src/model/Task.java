@@ -5,6 +5,8 @@
  */
 package model;
 
+import cirriculumviewerController.Controller;
+
 /**
  *
  * @author Elena_Kholkina
@@ -68,6 +70,7 @@ public class Task {
 
     @Override
     public String toString() {
+         if (Controller.mouseClickMode) return getDescription();
         return title;
     }
 

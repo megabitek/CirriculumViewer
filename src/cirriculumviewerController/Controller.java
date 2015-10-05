@@ -30,6 +30,8 @@ import org.xml.sax.SAXException;
 public class Controller {
 
     public static SAXHandler handler;
+    HashMap <String, String> objectsDescription;
+    public static boolean mouseClickMode; 
 
     void init() throws SAXException, ParserConfigurationException, IOException {
 
@@ -40,9 +42,11 @@ public class Controller {
         handler = new SAXHandler();
 
         parser.parse(new File("Cirriculum.xml"), handler);
-        addProgrammsInStudents();
-        addCoursesInProgramms();
+       
+       
         addTasksInCourses();
+        addCoursesInProgramms();
+        addProgrammsInStudents();
         
         
     }
@@ -117,5 +121,5 @@ public class Controller {
             entry.setValue(course);
         }
     }
-
+   
 }
